@@ -2,13 +2,13 @@ def analyze_image(image_path):
     return {
         "safety_score": 78,
         "violations": [
-            "لا يرتدي خوذة سلامة",
-            "لا يرتدي سترة عاكسة",
-            "حفرة غير مؤمنة"
+            "No Helmet",
+            "No Safety Vest",
+            "Unsafe Excavation Area"
         ],
         "recommendations": [
-            "ارتداء خوذة السلامة",
-            "ارتداء السترة العاكسة",
-            "تأمين منطقة الحفر"
+            "Wear Helmet",
+            "Wear Safety Vest",
+            "Secure Excavation Area"
         ]
     }
