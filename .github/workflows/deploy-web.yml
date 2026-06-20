@@ -17,14 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create simple website
-        run: |
-          mkdir website
-          echo "<h1>NWC Tabuk SafeSite</h1><p>Website deployment is working.</p>" > website/index.html
-
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: website
+          path: .
 
   deploy:
     needs: build
