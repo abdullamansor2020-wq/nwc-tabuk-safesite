@@ -1,12 +1,9 @@
 from fastapi import FastAPI, UploadFile, File
+from PIL import Image
+import io
 from ai_engine import analyze_image
-import shutil
-import os
 
-app = FastAPI()
-
-UPLOAD_DIR = "uploads"
-os.makedirs(UPLOAD_DIR, exist_ok=True)
+app = FastAPI(title="NWC Tabuk SafeSite API")
 
 @app.get("/")
 def root():
@@ -14,21 +11,10 @@ def root():
 
 @app.post("/analyze")
 async def analyze(file: UploadFile = File(...)):
-    try:
-        file_path = os.path.join(UPLOAD_DIR, file.filename)
+    contents = await file.read()
 
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
+    image = Image.open(
+        io.BytesIO(contents)
+    ).convert("RGB")
 
-        result = analyze_image(file_path)
-
-        return {
-            "status": "success",
-            "result": result
-        }
-
-    except Exception as e:
-        return {
-            "status": "error",
-            "message": str(e)
-        }
+    return analyze_image(image)
