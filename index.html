@@ -1,175 +1,39 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NWC Tabuk SafeSite</title>
-
 <style>
 body{
-  margin:0;
-  background:#f5f7fb;
   font-family:Arial;
-}
-
-.header{
-  background:#0057B8;
-  color:white;
-  padding:30px;
+  background:#f5f7fb;
   text-align:center;
-}
-
-.container{
-  padding:20px;
-}
-
-.card{
-  background:white;
-  padding:20px;
-  margin-bottom:20px;
-  border-radius:16px;
-  box-shadow:0 2px 10px rgba(0,0,0,.1);
+  padding:50px;
 }
 
 button{
-  width:100%;
-  padding:15px;
-  margin-top:10px;
-  border:none;
-  border-radius:10px;
   background:#0057B8;
   color:white;
-  font-size:16px;
-  cursor:pointer;
-}
-
-img{
-  width:100%;
+  border:none;
+  padding:15px 30px;
   border-radius:10px;
-  margin-top:15px;
-}
-
-.kpi{
-  font-size:28px;
-  color:#0057B8;
-  font-weight:bold;
-}
-
-.violation{
-  color:#d32f2f;
-  margin-top:10px;
-}
-
-.recommendation{
-  color:#2e7d32;
-  margin-top:10px;
+  font-size:18px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <h1>🛡️ NWC Tabuk SafeSite</h1>
-  <p>AI Construction Safety Platform</p>
-</div>
-
-<div class="container">
-
-<div class="card">
+<h1>🛡️ NWC Tabuk SafeSite</h1>
 <h2>رفع صورة الموقع</h2>
 
-<input
-type="file"
-id="imageInput"
-accept="image/*">
+<input type="file">
 
-<img id="preview" style="display:none;">
+<br><br>
 
-<button onclick="analyzeImage()">
+<button>
 🔍 تحليل الصورة
 </button>
-
-</div>
-
-<div class="card">
-<h2>نتيجة التحليل</h2>
-
-<div class="kpi" id="score">
-Safety Score: --
-</div>
-
-<div id="violations"></div>
-<div id="recommendations"></div>
-
-</div>
-
-</div>
-
-<script>
-
-function analyzeImage(){
-
-document.getElementById("score").innerHTML =
-"Safety Score: 78%";
-
-document.getElementById("violations").innerHTML =
-`
-<div class="violation">
-❌ لا يرتدي خوذة سلامة
-</div>
-
-<div class="violation">
-❌ لا يرتدي سترة عاكسة
-</div>
-
-<div class="violation">
-⚠️ حفرة غير مؤمنة
-</div>
-`;
-
-document.getElementById("recommendations").innerHTML =
-`
-<div class="recommendation">
-✔️ ارتداء خوذة السلامة
-</div>
-
-<div class="recommendation">
-✔️ ارتداء السترة العاكسة
-</div>
-
-<div class="recommendation">
-✔️ تأمين منطقة الحفر
-</div>
-`;
-
-}
-
-document
-.getElementById("imageInput")
-.addEventListener("change", function(e){
-
-const file = e.target.files[0];
-
-if(!file) return;
-
-const reader = new FileReader();
-
-reader.onload = function(event){
-
-const img =
-document.getElementById("preview");
-
-img.src = event.target.result;
-img.style.display = "block";
-
-};
-
-reader.readAsDataURL(file);
-
-});
-
-</script>
 
 </body>
 </html>
