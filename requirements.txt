@@ -3,4 +3,5 @@ uvicorn
 python-multipart
 pillow
 ultralytics
-sqlalchemy
+opencv-python-headless
+numpy
